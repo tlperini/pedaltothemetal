@@ -3,7 +3,7 @@
 //Define Inputs for HX711 outputs
 HX711 scale(2, 3);
 //Define joystick type
-Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK,0,0,false,false,false,false,false,false,false,true,true,true,false);
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK,0,0,false,false,false,true,false,false,false,true,false,true,false);
 
 int lastButtonState[4] = {0,0,0,0};
 
