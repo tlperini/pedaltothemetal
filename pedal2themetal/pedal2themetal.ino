@@ -15,6 +15,10 @@ void setup() {
   pinMode(4,OUTPUT); //define a digital pin as output
   digitalWrite(4, HIGH); // set the above pin as HIGH so it acts as 5V
 
+  // Create an additional VCC using PIN A2
+  pinMode(A2,OUTPUT); //define an analog pin as output
+  digitalWrite(A2, HIGH); // set the above pin as HIGH so it acts as 5V
+
   //Initialize LoadCell
   ////LoadCell.begin();
   ////LoadCell.start(2500); // tare preciscion can be improved by adding a few seconds of stabilising time
@@ -44,9 +48,10 @@ void loop() {
 
   //Read values for throttle (HAL sensor)
   unsigned int throttle=(abs(analogRead(A0)-430))*3.5;
-  if(throttle <= 70) { throttle = 0; }
+  if(throttle <= 80) { throttle = 0; }
   Joystick.setThrottle(throttle);
 
-  //Read values for clutch
-  //Joystick.setRxAxis(analogRead(A1));
+  //Read values for clutch (Potentiometer)
+  unsigned int clutch=(abs(analogRead(A1))*6);
+  Joystick.setRxAxis(clutch);
 }
