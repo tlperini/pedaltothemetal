@@ -47,8 +47,7 @@ void loop() {
   Joystick.setBrake(brake);
 
   //Read values for throttle (HAL sensor)
-  unsigned int throttle=(abs(analogRead(A0)-430))*3.5;
-  if(throttle <= 80) { throttle = 0; }
+  unsigned int throttle=(analogRead(A0)-102)*2.11;
   Joystick.setThrottle(throttle);
 
   //Read values for clutch (Potentiometer)
