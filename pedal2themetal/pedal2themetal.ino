@@ -52,5 +52,7 @@ void loop() {
 
   //Read values for clutch (Potentiometer)
   unsigned int clutch=(abs(analogRead(A1))*6);
+  //Set clutch deadzone
+  if(clutch < 90) { clutch = 0; }
   Joystick.setRxAxis(clutch);
 }
