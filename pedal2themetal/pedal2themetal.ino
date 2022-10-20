@@ -18,6 +18,13 @@ void setup() {
   // Create an additional VCC using PIN A2
   pinMode(A2,OUTPUT); //define an analog pin as output
   digitalWrite(A2, HIGH); // set the above pin as HIGH so it acts as 5V
+  
+  // Throttle output analog pin
+  pinMode(A7,OUTPUT);
+  // Break output analog pin
+  pinMode(A8,OUTPUT);
+  // Clutch output analog pin
+  pinMode(A9,OUTPUT);
 
   //Initialize LoadCell
   ////LoadCell.begin();
@@ -45,14 +52,17 @@ void loop() {
   if(brake < 3) { brake = 0; }
   else { brake = brake * 34.1; } // 1024/30=34.1
   Joystick.setBrake(brake);
+  analogWrite(A8,brake);
 
   //Read values for throttle (HAL sensor)
   unsigned int throttle=(analogRead(A0)-102)*2.11;
   Joystick.setThrottle(throttle);
+  analogWrite(A7,throttle);
 
   //Read values for clutch (Potentiometer)
   unsigned int clutch=(abs(analogRead(A1))*6);
   //Set clutch deadzone
   if(clutch < 90) { clutch = 0; }
   Joystick.setRxAxis(clutch);
+  analogWrite(A9,clutch);
 }
