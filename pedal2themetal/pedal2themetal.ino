@@ -60,15 +60,15 @@ void loop() {
   //  if(brake < 3) { brake = 0; }
   //  else { brake = brake * 12; } // 1024/30=34.1
   Joystick.setBrake(brake);
-  analogWrite(A8,brake);
+  //analogWrite(A8,brake);
 
   //Read values for throttle (HAL sensor)
   unsigned int throttle=(analogRead(A0));
   Joystick.setThrottle(throttle);
-  analogWrite(A7,throttle);
+  //analogWrite(A7,throttle);
 
   //Read values for clutch (Potentiometer)
   unsigned int clutch=(analogRead(A1));
   Joystick.setRxAxis(clutch);
-  analogWrite(A9,clutch);
+  //analogWrite(A9,clutch);
 }
